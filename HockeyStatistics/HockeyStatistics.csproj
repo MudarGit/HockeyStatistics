@@ -173,6 +173,14 @@
     <Compile Include="Migrations\201506011637342_statsController.Designer.cs">
       <DependentUpon>201506011637342_statsController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506060414038_sortedstats.cs" />
+    <Compile Include="Migrations\201506060414038_sortedstats.Designer.cs">
+      <DependentUpon>201506060414038_sortedstats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506060419044_Descending.cs" />
+    <Compile Include="Migrations\201506060419044_Descending.Designer.cs">
+      <DependentUpon>201506060419044_Descending.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -259,6 +267,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506011637342_statsController.resx">
       <DependentUpon>201506011637342_statsController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506060414038_sortedstats.resx">
+      <DependentUpon>201506060414038_sortedstats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506060419044_Descending.resx">
+      <DependentUpon>201506060419044_Descending.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

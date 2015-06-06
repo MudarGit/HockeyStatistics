@@ -20,9 +20,22 @@ namespace HockeyStatistics.Controllers
             foreach(var player in db.Stats)
             {
                 player.WinPercentage = player.Wins / player.GamesPlayed;
+                
             }
+
+            db.SaveChanges();
+            var sortedstats = db.Stats.OrderByDescending(c => c.WinPercentage);
+            var rankcounter = 1;
+
+            foreach(var player in sortedstats)
+            {
+                player.Rank = rankcounter;
+                rankcounter += 1;
+            }
+
+            var sortedstats2 = sortedstats.OrderByDescending(c => c.WinPercentage);
             
-            return View(db.Stats.ToList());
+            return View(sortedstats2);
         }
 
         // GET: Stats/Details/5
