@@ -31,5 +31,7 @@ namespace HockeyStatistics.Models
         }
 
         public System.Data.Entity.DbSet<HockeyStatistics.Models.Stats> Stats { get; set; }
+
+        public System.Data.Entity.DbSet<HockeyStatistics.Models.Games> Games { get; set; }
     }
 }

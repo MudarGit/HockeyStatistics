@@ -10,126 +10,139 @@ using HockeyStatistics.Models;
 
 namespace HockeyStatistics.Controllers
 {
-    public class StatsController : Controller
+    public class GamesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Stats
+        // GET: Games
         public ActionResult Index()
         {
-            foreach(var player in db.Stats)
+            var gamesadd = (from g in db.Games
+                            where g.AddGame == true
+                            select g).ToList();
+            foreach (var G in gamesadd)
             {
-                player.GamesPlayed = player.Wins + player.Losses;
-                player.WinPercentage = player.Wins / player.GamesPlayed;
+                foreach (var player in db.Stats)
+                {
+                    if (player.Name == G.Name)
+                    {
+                        player.Goals += G.Goals;
+                        if (G.Win == true)
+                        {
+                            player.Wins += 1;
+                        }
+                        else
+                        {
+                            player.Losses += 1;
+                        }
+
+                        
+                    }
+                }
+
             }
+            foreach (var G in db.Games)
+            {
+                G.AddGame = false;
+            }
+
 
             db.SaveChanges();
-            var sortedstats = db.Stats.OrderByDescending(c => c.WinPercentage);
-            var rankcounter = 1;
-            var games = db.Games.ToList();
 
-            foreach(var player in sortedstats)
-            {
-                player.Rank = rankcounter;
-                rankcounter += 1;
-            }
-
-            var sortedstats2 = sortedstats.OrderByDescending(c => c.WinPercentage);
-            
-            return View(sortedstats2);
+            return View(db.Games.ToList());
         }
 
-        // GET: Stats/Details/5
+        // GET: Games/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stats stats = db.Stats.Find(id);
-            if (stats == null)
+            Games games = db.Games.Find(id);
+            if (games == null)
             {
                 return HttpNotFound();
             }
-            return View(stats);
+            return View(games);
         }
 
-        // GET: Stats/Create
+        // GET: Games/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Stats/Create
+        // POST: Games/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Rank,ID,Name,GamesPlayed,Goals,Wins,Losses,WinPercentage")] Stats stats)
+        public ActionResult Create([Bind(Include = "ID,AddGame,Date,Name,Win,Goals")] Games games)
         {
             if (ModelState.IsValid)
             {
-                db.Stats.Add(stats);
+                db.Games.Add(games);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(stats);
+            return View(games);
         }
 
-        // GET: Stats/Edit/5
+        // GET: Games/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stats stats = db.Stats.Find(id);
-            if (stats == null)
+            Games games = db.Games.Find(id);
+            if (games == null)
             {
                 return HttpNotFound();
             }
-            return View(stats);
+            return View(games);
         }
 
-        // POST: Stats/Edit/5
+        // POST: Games/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Rank,ID,Name,GamesPlayed,Goals,Wins,Losses,WinPercentage")] Stats stats)
+        public ActionResult Edit([Bind(Include = "ID,AddGame,Date,Name,Win,Goals")] Games games)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(stats).State = EntityState.Modified;
+                db.Entry(games).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(stats);
+            return View(games);
         }
 
-        // GET: Stats/Delete/5
+        // GET: Games/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stats stats = db.Stats.Find(id);
-            if (stats == null)
+            Games games = db.Games.Find(id);
+            if (games == null)
             {
                 return HttpNotFound();
             }
-            return View(stats);
+            return View(games);
         }
 
-        // POST: Stats/Delete/5
+        // POST: Games/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Stats stats = db.Stats.Find(id);
-            db.Stats.Remove(stats);
+            Games games = db.Games.Find(id);
+            db.Games.Remove(games);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

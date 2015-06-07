@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StatsController.cs" />
@@ -181,8 +182,37 @@
     <Compile Include="Migrations\201506060419044_Descending.Designer.cs">
       <DependentUpon>201506060419044_Descending.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506060528159_Games.cs" />
+    <Compile Include="Migrations\201506060528159_Games.Designer.cs">
+      <DependentUpon>201506060528159_Games.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506060531456_Games2.cs" />
+    <Compile Include="Migrations\201506060531456_Games2.Designer.cs">
+      <DependentUpon>201506060531456_Games2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506060533423_Games3.cs" />
+    <Compile Include="Migrations\201506060533423_Games3.Designer.cs">
+      <DependentUpon>201506060533423_Games3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506060542100_GamesController.cs" />
+    <Compile Include="Migrations\201506060542100_GamesController.Designer.cs">
+      <DependentUpon>201506060542100_GamesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506060607353_GamesAddGameNumber.cs" />
+    <Compile Include="Migrations\201506060607353_GamesAddGameNumber.Designer.cs">
+      <DependentUpon>201506060607353_GamesAddGameNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506061717202_AddGame.cs" />
+    <Compile Include="Migrations\201506061717202_AddGame.Designer.cs">
+      <DependentUpon>201506061717202_AddGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506061720056_Gameview.cs" />
+    <Compile Include="Migrations\201506061720056_Gameview.Designer.cs">
+      <DependentUpon>201506061720056_Gameview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Games.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Stats.cs" />
@@ -250,6 +280,11 @@
     <Content Include="Views\Stats\Details.cshtml" />
     <Content Include="Views\Stats\Edit.cshtml" />
     <Content Include="Views\Stats\Index.cshtml" />
+    <Content Include="Views\Games\Create.cshtml" />
+    <Content Include="Views\Games\Delete.cshtml" />
+    <Content Include="Views\Games\Details.cshtml" />
+    <Content Include="Views\Games\Edit.cshtml" />
+    <Content Include="Views\Games\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -273,6 +308,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506060419044_Descending.resx">
       <DependentUpon>201506060419044_Descending.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506060528159_Games.resx">
+      <DependentUpon>201506060528159_Games.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506060531456_Games2.resx">
+      <DependentUpon>201506060531456_Games2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506060533423_Games3.resx">
+      <DependentUpon>201506060533423_Games3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506060542100_GamesController.resx">
+      <DependentUpon>201506060542100_GamesController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506060607353_GamesAddGameNumber.resx">
+      <DependentUpon>201506060607353_GamesAddGameNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506061717202_AddGame.resx">
+      <DependentUpon>201506061717202_AddGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506061720056_Gameview.resx">
+      <DependentUpon>201506061720056_Gameview.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
